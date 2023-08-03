@@ -1,0 +1,25 @@
+:root {
+  --main: #e2b714;
+  --main-o-1: #e2b51462;
+  --main-o-2: #e2b514b3;
+  --bg-1: #646669;
+  --bg-2: #323437;
+  --bg-3: #212223;
+  --bg-l-1: #ffffff9a;
+  --bg-l-2: #ffffffe2;
+  --bg-l-3: #ffffff;
+  --bg-o-1: #00000037;
+  --bg-o-2: #00000075;
+  --bg-o-3: #000000bb;
+  --bg-o-l-1: #ffffff37;
+  --bg-o-l-2: #ffffff75;
+  --bg-o-l-3: #ffffffd2;
+  --text-1: #d1d0c5ad;
+  --text-2: #d1d0c5;
+  --text-3: #ffffff;
+  --text-d-1: #00000037;
+  --text-d-2: #00000075;
+  --text-d-3: #000000bb;
+  --err: #ca4754;
+  --err-ex: #7e2a33;
+}

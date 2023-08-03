@@ -1,0 +1,42 @@
+.qrcode {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-o-3);
+  padding: 16px;
+  border-radius: 8px;
+  align-items: center;
+
+  .wrap-customqrcode {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 100%;
+  }
+  #download-btn {
+    width: 100%;
+    margin-top: 24px;
+  }
+  .info {
+    margin-top: 24px;
+    max-width: 264px;
+    width: 100%;
+
+    .info-item {
+      width: 100%;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+
+      span {
+        color: var(--main);
+        font-weight: 600;
+      }
+    }
+    .info-item + .info-item {
+      margin-top: 6px;
+    }
+  }
+}

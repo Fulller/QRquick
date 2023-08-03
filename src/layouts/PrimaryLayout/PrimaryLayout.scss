@@ -1,0 +1,46 @@
+@import "../../components/App/variables.scss";
+
+#primary-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 32px;
+
+  #header-primary-layout {
+    width: 100%;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    padding: 8px 32px;
+    z-index: 1;
+
+    @supports (
+      (-webkit-backdrop-filter: blur(40px)) or (backdrop-filter: blur(40px))
+    ) {
+      &.scrolled {
+        -webkit-backdrop-filter: blur(40px);
+        backdrop-filter: blur(40px);
+        background: var(--bg-o-1);
+      }
+    }
+  }
+  #main-primary-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
+    padding: 16px 0;
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: $large) {
+  #primary-layout {
+    padding: 16px;
+
+    #header-primary-layout {
+      padding: 8px 16px;
+    }
+  }
+}

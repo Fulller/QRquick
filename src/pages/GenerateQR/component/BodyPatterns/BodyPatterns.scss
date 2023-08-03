@@ -1,0 +1,42 @@
+#body-patterns.editor-feature {
+  .wrap-features {
+    .feature {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+
+      h5 {
+        font-size: 12px;
+        margin-bottom: 8px;
+        color: var(--text-1);
+      }
+    }
+    .feature.cell-style {
+      justify-content: space-between;
+      .images {
+        display: flex;
+        justify-content: space-between;
+        .cell {
+          flex: 1;
+          background-color: transparent;
+          height: 48px;
+          img {
+            padding: 8px;
+            border-radius: 8px;
+            background-color: var(--bg-l-3);
+            height: 100%;
+          }
+          &:hover {
+            img {
+              background-color: var(--bg-2);
+            }
+          }
+        }
+        .cell + .cell {
+          margin-left: 12px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,203 @@
+#my-page {
+  table.qrs {
+    border-radius: 0 0 16px 16px;
+    width: 100%;
+    overflow: hidden;
+
+    thead {
+      tr {
+        background-color: var(--bg-1);
+        th {
+          padding: 8px;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        background-color: var(--bg-o-2);
+        td {
+          max-width: 160px;
+          text-align: center;
+          padding: 8px;
+
+          span {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          a,
+          .button {
+            display: block;
+            width: 100%;
+          }
+
+          .button + .button {
+            margin-top: 12px;
+          }
+        }
+      }
+
+      tr:nth-child(even) {
+        background-color: var(--bg-o-1);
+      }
+    }
+  }
+  div.qrs {
+    display: flex;
+    flex-direction: column;
+
+    .qr {
+      min-height: 200px;
+      background-color: var(--bg-o-2);
+      padding: 16px;
+      border-radius: 8px;
+      h3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 12px;
+        color: var(--text-3);
+      }
+      .info {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 8px;
+
+        div {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          justify-content: center;
+        }
+        .type-and-created {
+          text-align: start;
+          p {
+            color: var(--text-1);
+            span {
+              color: var(--text-3);
+            }
+          }
+          p + p {
+            margin-top: 12px;
+          }
+        }
+        .total-scan {
+          span {
+            color: var(--text-1);
+          }
+          .number {
+            margin-top: 12px;
+            font-size: 30px;
+            color: var(--text-3);
+          }
+        }
+        .actions {
+          .button + .button {
+            margin-top: 12px;
+          }
+        }
+      }
+
+      @media (max-width: 700px) and (min-width: 570px) {
+        .info {
+          grid-template-columns: auto auto auto;
+          .actions {
+            grid-column: span 3;
+            flex-direction: row;
+            justify-content: space-between;
+            .button {
+              flex: 1;
+              margin: 8px !important;
+            }
+          }
+        }
+      }
+      @media (max-width: 570px) {
+        .info {
+          grid-template-columns: auto auto;
+          .actions {
+            flex-direction: column;
+            .button + .button {
+              margin-top: 12px;
+            }
+          }
+        }
+      }
+      @media (max-width: 450px) {
+        .info {
+          grid-template-columns: auto;
+          align-items: center;
+
+          .qrcode-info {
+            align-items: center;
+          }
+        }
+      }
+    }
+    .qr + .qr {
+      margin-top: 12px;
+    }
+    .qr.removed {
+      animation: slide 1s ease-out;
+      @keyframes slide {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+      }
+    }
+  }
+
+  // @media (max-width: 800px) {
+  //   div.qrs {
+  //     display: flex;
+  //   }
+  //   table.qrs {
+  //     display: none;
+  //   }
+  // }
+}
+.options {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  color: white;
+  background-color: white;
+  border-radius: 8px;
+  background-color: black;
+  box-shadow: 0px 0px 5px var(--bg-o-l-1);
+
+  .wrap-option {
+    .option {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      span,
+      i {
+        color: var(--text-1);
+      }
+      &:hover {
+        background-color: var(--bg-o-l-1);
+        span,
+        i {
+          color: var(--text-3);
+        }
+      }
+    }
+  }
+  .wrap-option + .wrap-option {
+    .option {
+      border-top: 1px solid var(--bg-o-l-1);
+    }
+  }
+}
