@@ -12,3 +12,7 @@ declare module "*.scss" {
   const content: { [className: string]: string };
   export default content;
 }
+declare module "js-cookie" {
+  export function get(key: string): string | undefined;
+  export function set(key: string, value: string, options?: any): void;
+}

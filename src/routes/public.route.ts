@@ -5,6 +5,7 @@ import CreateQR from "../pages/Create";
 import MyQR from "../pages/My";
 import GenerateQR from "../pages/GenerateQR";
 import Test from "../pages/Test";
+import Login from "../pages/Login";
 import { features } from "../constans/feature.const";
 import _ from "lodash";
 interface HomeProps {}
@@ -25,6 +26,12 @@ const publicRoutes: RouteType[] = [
     Layout: PrimaryLayout,
     Page: Home,
     path: "/",
+    title: "Home",
+  },
+  {
+    Layout: PrimaryLayout,
+    Page: Home,
+    path: "/home",
     title: "Home",
   },
   {
@@ -56,6 +63,12 @@ const publicRoutes: RouteType[] = [
     Page: Test,
     path: "/test",
     title: "Test QR code",
+  },
+  {
+    Layout: PrimaryLayout,
+    Page: Login,
+    path: "/login",
+    title: "Login",
   },
 ];
 
