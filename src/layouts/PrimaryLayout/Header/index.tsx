@@ -1,12 +1,13 @@
 import Logo from "../../../images/logos/logo.png";
 import { FC, useState, ReactNode } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getAuthUrl } from "../../../tools/url.tool";
 import * as selector from "../../../redux/selector";
 import { useSelector } from "react-redux";
 import _ from "lodash";
 import { Avatar } from "antd";
 import Tippy from "@tippyjs/react/headless";
+import { setLS } from "../../../tools/localStorage.tool";
 
 import "./Header.scss";
 
@@ -30,8 +31,14 @@ const menu: MenuItem[] = [
 const Header: FC = () => {
   const user = useSelector(selector.user);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [menuVisible, setMenuVisible] = useState<boolean>(false);
   const [avatarVisible, setAvatarVisible] = useState<boolean>(false);
+  function handleLogout() {
+    setLS("accesstoken", null);
+    navigate("/");
+    window.location.reload();
+  }
 
   return (
     <header id="header">
@@ -62,12 +69,12 @@ const Header: FC = () => {
                 </div>
                 <div className="part">
                   {user ? (
-                    <Link to={getAuthUrl("/logout")} className="tooltip-item">
+                    <button onClick={handleLogout} className="tooltip-item">
                       <span className="icon">
                         <i className="fa-solid fa-right-from-bracket"></i>
                       </span>
                       <span className="title">Logout</span>
-                    </Link>
+                    </button>
                   ) : (
                     <Link
                       to={getAuthUrl("/auth/google")}
@@ -144,12 +151,12 @@ const Header: FC = () => {
                     })}
                   </div>
                   <div className="part">
-                    <Link to={getAuthUrl("/logout")} className="tooltip-item">
+                    <button onClick={handleLogout} className="tooltip-item">
                       <span className="icon">
                         <i className="fa-solid fa-right-from-bracket"></i>
                       </span>
                       <span className="title">Logout</span>
-                    </Link>
+                    </button>
                   </div>
                 </div>
               );

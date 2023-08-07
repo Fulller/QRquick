@@ -2,8 +2,7 @@ import { getApiUrl } from "../tools/url.tool";
 import axios from "axios";
 import FormData from "form-data";
 import _ from "lodash";
-
-axios.defaults.withCredentials = true;
+import { getHeaders } from "../tools/header.tool";
 
 export const createQrcode = async (qrcodeData: any) => {
   try {
@@ -11,7 +10,9 @@ export const createQrcode = async (qrcodeData: any) => {
     _.forEach(qrcodeData, (value, key) => {
       formData.append(key, value);
     });
-    const response = await axios.post(getApiUrl("/qrcode/create"), formData);
+    const response = await axios.post(getApiUrl("/qrcode/create"), formData, {
+      headers: getHeaders(),
+    });
     return response.data;
   } catch (error: any) {
     return error.response.data;
@@ -27,7 +28,9 @@ export const getQrcode = async (id: string = "") => {
 };
 export const getQRcodeByOwner = async () => {
   try {
-    const response = await axios.get(getApiUrl("/qrcode/owner"));
+    const response = await axios.get(getApiUrl("/qrcode/owner"), {
+      headers: getHeaders(),
+    });
     return response.data;
   } catch (error: any) {
     return error.response.data;

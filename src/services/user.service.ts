@@ -1,24 +1,13 @@
 import { getAuthUrl } from "../tools/url.tool";
 import axios from "axios";
-import { getLS } from "../tools/localStorage.tool";
-
-axios.defaults.withCredentials = true;
+import { getHeaders } from "../tools/header.tool";
 
 export const getUser = () => {
-  const accessToken = getLS("accesstoken", "");
   return axios
-    .get(getAuthUrl("/user"), {
+    .get(getAuthUrl("/profile"), {
       withCredentials: true,
-      headers: {
-        accessToken,
-      },
+      headers: getHeaders(),
     })
-    .then((data) => data.data.metadata.user)
-    .catch((err) => null);
-};
-export const googleLogin = () => {
-  return axios
-    .get(getAuthUrl("/auth/google"))
-    .then((data) => data)
+    .then((data) => data.data.metadata.profile)
     .catch((err) => null);
 };
