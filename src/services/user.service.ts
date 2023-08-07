@@ -1,11 +1,18 @@
 import { getAuthUrl } from "../tools/url.tool";
 import axios from "axios";
+import { getLS } from "../tools/localStorage.tool";
 
 axios.defaults.withCredentials = true;
 
 export const getUser = () => {
+  const accessToken = getLS("accesstoken", "");
   return axios
-    .get(getAuthUrl("/user"), { withCredentials: true })
+    .get(getAuthUrl("/user"), {
+      withCredentials: true,
+      headers: {
+        accessToken,
+      },
+    })
     .then((data) => data.data.metadata.user)
     .catch((err) => null);
 };

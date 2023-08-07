@@ -1,15 +1,14 @@
-import React, { FC, useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+import { setLS } from "../../tools/localStorage.tool";
 
 const Login: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
-  const accessToken = searchParams.get("accessToken");
+  const accessToken = searchParams.get("accesstoken");
   if (accessToken) {
-    console.log("dodo");
-    Cookies.set("accessToken", accessToken, { expires: 1 });
+    setLS("accesstoken", accessToken);
   }
   useEffect(() => {
     navigate("/");
