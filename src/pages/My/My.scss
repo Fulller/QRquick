@@ -1,4 +1,5 @@
 #my-page {
+  text-align: center;
   table.qrs {
     border-radius: 0 0 16px 16px;
     width: 100%;
@@ -165,6 +166,57 @@
   //     display: none;
   //   }
   // }
+  .wrap-pagination {
+    text-align: center;
+    margin-top: 16px;
+
+    .ant-pagination {
+      li {
+        a {
+          color: var(--text-3);
+          font-size: 20px;
+          padding: 0 12px;
+        }
+      }
+      .ant-pagination-item-active {
+        background-color: var(--bg-o-2);
+        outline: none;
+        border: none;
+        a {
+          color: var(--main);
+        }
+      }
+    }
+  }
+  .no-qr {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg-o-2);
+    padding: 32px 16px;
+    border-radius: 8px;
+
+    p {
+      max-width: 600px;
+      margin: 16px;
+    }
+
+    .create-btn {
+      background-color: var(--main);
+      color: var(--text-d-3);
+      padding: 16px;
+      font-size: 20px;
+
+      &:hover {
+        background-color: var(--main-o-1);
+      }
+      i {
+        margin-right: 12px;
+        color: var(--text-d-3);
+      }
+    }
+  }
 }
 .options {
   display: flex;

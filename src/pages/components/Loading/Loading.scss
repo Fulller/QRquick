@@ -1,0 +1,10 @@
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  i {
+    color: var(--main);
+    font-size: 30px;
+  }
+}

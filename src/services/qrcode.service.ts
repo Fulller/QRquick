@@ -27,14 +27,10 @@ export const getQrcode = async (id: string = "") => {
   }
 };
 export const getQRcodeByOwner = async () => {
-  try {
-    const response = await axios.get(getApiUrl("/qrcode/owner"), {
-      headers: getHeaders(),
-    });
-    return response.data;
-  } catch (error: any) {
-    return error.response.data;
-  }
+  const response = await axios.get(getApiUrl("/qrcode/owner"), {
+    headers: getHeaders(),
+  });
+  return response.data;
 };
 
 export const deleteQRcodeById = async (id: string) => {

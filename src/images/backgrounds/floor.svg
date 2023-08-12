@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#f1f2f3;display:block;z-index:1;position:relative" width="1422" height="670" preserveAspectRatio="xMidYMid" viewBox="0 0 1422 670">
+<g transform="translate(711,335) scale(1,1) translate(-711,-335)"><defs>
+  <linearGradient id="lg-0" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#646669" offset="0.24"></stop>
+  <stop stop-color="#212223" offset="0.76"></stop>
+  </linearGradient>
+<linearGradient id="lg-0" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#646669" offset="0.24"></stop>
+  <stop stop-color="#212223" offset="0.76"></stop>
+  </linearGradient><linearGradient id="lg-0" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#646669" offset="0.24"></stop>
+  <stop stop-color="#212223" offset="0.76"></stop>
+  </linearGradient><linearGradient id="lg-1" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#323437" offset="0.24"></stop>
+  <stop stop-color="#212223" offset="0.76"></stop>
+  </linearGradient><linearGradient id="lg-1" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#323437" offset="0.24"></stop>
+  <stop stop-color="#212223" offset="0.76"></stop>
+  </linearGradient><linearGradient id="lg-2" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#323437" offset="0.24"></stop>
+  <stop stop-color="#646669" offset="0.76"></stop>
+  </linearGradient><linearGradient id="lg-2" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#323437" offset="0.24"></stop>
+  <stop stop-color="#646669" offset="0.76"></stop>
+  </linearGradient><linearGradient id="lg-3" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#212223" offset="0.24"></stop>
+  <stop stop-color="#646669" offset="0.76"></stop>
+  </linearGradient><linearGradient id="lg-3" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#212223" offset="0.24"></stop>
+  <stop stop-color="#646669" offset="0.76"></stop>
+  </linearGradient><linearGradient id="lg-4" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#212223" offset="0.24"></stop>
+  <stop stop-color="#323437" offset="0.76"></stop>
+  </linearGradient><linearGradient id="lg-4" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#212223" offset="0.24"></stop>
+  <stop stop-color="#323437" offset="0.76"></stop>
+  </linearGradient></defs>
+<path d="M0 -161.47 c34.56999999999999 322.94 1387.43 -322.94 1422 0
+L1422 235.70600000000005 c676.4300000000001 -322.94 -2098.4300000000003 322.94 -1422 0Z" fill="url(&quot;#lg-0&quot;)" stroke="none">
+ <animate attributeName="d" repeatCount="indefinite" dur="2s" begin="0s" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1" keyTimes="0;0.5;1" values="M0 -161.47 c34.56999999999999 322.94 1387.43 -322.94 1422 0
+L1422 235.70600000000005 c676.4300000000001 -322.94 -2098.4300000000003 322.94 -1422 0Z;M0 -161.47 c676.4300000000001 322.94 745.5699999999999 -322.94 1422 0
+L1422 235.70600000000005 c34.56999999999999 -322.94 -1456.57 322.94 -1422 0Z;M0 -161.47 c34.56999999999999 322.94 1387.43 -322.94 1422 0
+L1422 235.70600000000005 c676.4300000000001 -322.94 -2098.4300000000003 322.94 -1422 0Z" fill="url(&quot;#lg-0&quot;)"></animate>
+</path><defs>
+  <linearGradient id="lg-1" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#323437" offset="0.24"></stop>
+  <stop stop-color="#212223" offset="0.76"></stop>
+  </linearGradient>
+</defs>
+<path d="M0 37.11800000000002 c676.4300000000001 322.94 745.5699999999999 -322.94 1422 0
+L1422 434.294 c34.56999999999999 -322.94 -1456.57 322.94 -1422 0Z" fill="url(&quot;#lg-1&quot;)" stroke="none">
+ <animate attributeName="d" repeatCount="indefinite" dur="2s" begin="-0.4s" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1" keyTimes="0;0.5;1" values="M0 37.11800000000002 c676.4300000000001 322.94 745.5699999999999 -322.94 1422 0
+L1422 434.294 c34.56999999999999 -322.94 -1456.57 322.94 -1422 0Z;M0 37.11800000000002 c34.56999999999999 322.94 1387.43 -322.94 1422 0
+L1422 434.294 c676.4300000000001 -322.94 -2098.4300000000003 322.94 -1422 0Z;M0 37.11800000000002 c676.4300000000001 322.94 745.5699999999999 -322.94 1422 0
+L1422 434.294 c34.56999999999999 -322.94 -1456.57 322.94 -1422 0Z" fill="url(&quot;#lg-1&quot;)"></animate>
+</path><defs>
+  <linearGradient id="lg-2" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#323437" offset="0.24"></stop>
+  <stop stop-color="#646669" offset="0.76"></stop>
+  </linearGradient>
+</defs>
+<path d="M0 235.70600000000005 c34.56999999999999 322.94 1387.43 -322.94 1422 0
+L1422 632.8820000000001 c676.4300000000001 -322.94 -2098.4300000000003 322.94 -1422 0Z" fill="url(&quot;#lg-2&quot;)" stroke="none">
+ <animate attributeName="d" repeatCount="indefinite" dur="2s" begin="-0.8s" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1" keyTimes="0;0.5;1" values="M0 235.70600000000005 c34.56999999999999 322.94 1387.43 -322.94 1422 0
+L1422 632.8820000000001 c676.4300000000001 -322.94 -2098.4300000000003 322.94 -1422 0Z;M0 235.70600000000005 c676.4300000000001 322.94 745.5699999999999 -322.94 1422 0
+L1422 632.8820000000001 c34.56999999999999 -322.94 -1456.57 322.94 -1422 0Z;M0 235.70600000000005 c34.56999999999999 322.94 1387.43 -322.94 1422 0
+L1422 632.8820000000001 c676.4300000000001 -322.94 -2098.4300000000003 322.94 -1422 0Z" fill="url(&quot;#lg-2&quot;)"></animate>
+</path><defs>
+  <linearGradient id="lg-3" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#212223" offset="0.24"></stop>
+  <stop stop-color="#646669" offset="0.76"></stop>
+  </linearGradient>
+</defs>
+<path d="M0 434.294 c676.4300000000001 322.94 745.5699999999999 -322.94 1422 0
+L1422 831.4700000000001 c34.56999999999999 -322.94 -1456.57 322.94 -1422 0Z" fill="url(&quot;#lg-3&quot;)" stroke="none">
+ <animate attributeName="d" repeatCount="indefinite" dur="2s" begin="-1.2s" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1" keyTimes="0;0.5;1" values="M0 434.294 c676.4300000000001 322.94 745.5699999999999 -322.94 1422 0
+L1422 831.4700000000001 c34.56999999999999 -322.94 -1456.57 322.94 -1422 0Z;M0 434.294 c34.56999999999999 322.94 1387.43 -322.94 1422 0
+L1422 831.4700000000001 c676.4300000000001 -322.94 -2098.4300000000003 322.94 -1422 0Z;M0 434.294 c676.4300000000001 322.94 745.5699999999999 -322.94 1422 0
+L1422 831.4700000000001 c34.56999999999999 -322.94 -1456.57 322.94 -1422 0Z" fill="url(&quot;#lg-3&quot;)"></animate>
+</path><defs>
+  <linearGradient id="lg-4" x1="0" x2="1" y1="0" y2="0">
+  <stop stop-color="#212223" offset="0.24"></stop>
+  <stop stop-color="#323437" offset="0.76"></stop>
+  </linearGradient>
+</defs>
+<path d="M0 632.8820000000001 c34.56999999999999 322.94 1387.43 -322.94 1422 0
+L1422 1030.058 c676.4300000000001 -322.94 -2098.4300000000003 322.94 -1422 0Z" fill="url(&quot;#lg-4&quot;)" stroke="none">
+ <animate attributeName="d" repeatCount="indefinite" dur="2s" begin="-1.6s" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1" keyTimes="0;0.5;1" values="M0 632.8820000000001 c34.56999999999999 322.94 1387.43 -322.94 1422 0
+L1422 1030.058 c676.4300000000001 -322.94 -2098.4300000000003 322.94 -1422 0Z;M0 632.8820000000001 c676.4300000000001 322.94 745.5699999999999 -322.94 1422 0
+L1422 1030.058 c34.56999999999999 -322.94 -1456.57 322.94 -1422 0Z;M0 632.8820000000001 c34.56999999999999 322.94 1387.43 -322.94 1422 0
+L1422 1030.058 c676.4300000000001 -322.94 -2098.4300000000003 322.94 -1422 0Z" fill="url(&quot;#lg-4&quot;)"></animate>
+</path></g>
+</svg>

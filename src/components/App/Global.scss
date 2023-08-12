@@ -13,10 +13,11 @@
 
 body {
   background-color: var(--bg-2);
-  background-image: url(../../images/backgrounds/ttten.svg);
+  background-image: url(../../images/backgrounds/galaxy.svg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed; /* Thêm thuộc tính này để giữ background-image đứng yên */
+  background-attachment: fixed;
+  background-position: center;
 }
 a {
   text-decoration: none;

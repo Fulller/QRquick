@@ -16,3 +16,10 @@ declare module "js-cookie" {
   export function get(key: string): string | undefined;
   export function set(key: string, value: string, options?: any): void;
 }
+declare module "dom-to-image" {
+  const domtoimage: any;
+  export default domtoimage;
+}
+declare module "file-saver" {
+  export const saveAs: any;
+}

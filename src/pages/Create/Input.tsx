@@ -6,6 +6,7 @@ import _ from "lodash";
 import { featureName } from "../../constans/featureName.const";
 import { isNotURL } from "../../tools/url.tool";
 import { maxSize } from "../../constans/fileType.const";
+import { useMediaQuery } from "react-responsive";
 
 export interface InputProps {
   name: string;
@@ -24,6 +25,7 @@ const Input: FC<InputProps> = ({
   fileType = fileTypeEnum.Image,
   setFormValue,
 }) => {
+  const isMobile = useMediaQuery({ maxWidth: 576 });
   const [drapping, setDrapping] = useState<boolean>(false);
   const [errString, setErrString] = useState<string | null>(null);
   const { getRootProps } = useDropzone({
@@ -53,13 +55,16 @@ const Input: FC<InputProps> = ({
   const handleTextChange = (event: ChangeEvent<HTMLInputElement>) => {
     const valueString: string = event.target.value.trim();
     if (name === featureName.LINK && valueString && isNotURL(valueString)) {
-      setErrString("example url: https://me-qr.com/");
+      setErrString("example url: https://qrquick.vercel.app/");
       setValue(null);
       return;
     }
     setErrString(null);
     setValue(valueString);
   };
+  function handleChangeInput(e: ChangeEvent<HTMLInputElement>) {
+    setValue(_.get(e, "target.files[0]", null));
+  }
   useEffect(() => {
     if (setFormValue) {
       setFormValue({ name: name, payload: value });
@@ -69,11 +74,19 @@ const Input: FC<InputProps> = ({
     <>
       {type === "file" ? (
         <label
-          {...getRootProps()}
+          {...(!isMobile ? getRootProps() : {})}
           className={`input-group input-group-file ${
             drapping ? "drapping" : ""
           } `}
         >
+          {isMobile && (
+            <input
+              type="file"
+              onChange={handleChangeInput}
+              hidden
+              accept={fileType}
+            />
+          )}
           {!value ? (
             <p className="placeholder">
               <i className="fa-solid fa-upload fa-bounce upload-icon"></i>

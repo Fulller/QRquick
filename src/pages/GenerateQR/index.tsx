@@ -58,7 +58,7 @@ const GenerateQR: FC = () => {
           </div>
         </>
       ) : (
-        <h1>Not found with</h1>
+        <h1> </h1>
       )}
     </main>
   );

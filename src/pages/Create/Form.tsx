@@ -6,6 +6,7 @@ import { featureName } from "../../constans/featureName.const";
 import { standardForAPI } from "../../tools/lodash.toll";
 import { createQrcode } from "../../services/qrcode.service";
 import { useNavigate } from "react-router-dom";
+import loadingSVG from "../../images/loading/loading.svg";
 
 interface QRformProps {
   nameInputs: string[];
@@ -26,6 +27,8 @@ const QRform: FC<QRformProps> = ({ nameInputs = ["Name"], contentType }) => {
     .value();
   const [state, setFormValue] = useReducer(reducer, initialState);
   const [canSubmit, setCanSubmit] = useState<boolean>(false);
+  const [submiting, setSubmiting] = useState<boolean>(false);
+
   const checkCanSubmit = useCallback(
     (state: any): boolean => {
       return inputsProps
@@ -43,6 +46,8 @@ const QRform: FC<QRformProps> = ({ nameInputs = ["Name"], contentType }) => {
   const handleSubmit = async () => {
     try {
       if (!canSubmit) return;
+      setCanSubmit(false);
+      setSubmiting(true);
       const { metadata: qrCode }: any = await createQrcode(
         standardForAPI(state, {
           Name: "name",
@@ -52,13 +57,20 @@ const QRform: FC<QRformProps> = ({ nameInputs = ["Name"], contentType }) => {
           [featureName.PDF]: "file",
         })
       );
+      setSubmiting(false);
       navigate("/generate/" + qrCode._id);
     } catch (err) {
       console.log(err);
     }
   };
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSubmit();
+    }
+  };
   return (
-    <div className="QR-from">
+    <div className="QR-from" onKeyDown={handleKeyDown}>
       {_.chain(inputsProps)
         .filter((inputProps) => {
           return nameInputs.includes(inputProps.name);
@@ -80,6 +92,11 @@ const QRform: FC<QRformProps> = ({ nameInputs = ["Name"], contentType }) => {
         onClick={handleSubmit}
       >
         Customize & Download QR
+        <img
+          className={`loading-icon-btn ${!submiting ? "disable" : ""}`}
+          src={loadingSVG}
+          alt="loading"
+        />
       </button>
     </div>
   );

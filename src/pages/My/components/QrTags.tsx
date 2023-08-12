@@ -29,6 +29,7 @@ const QrsTags: FC<QrsProps> = ({ qrs: qrsProp }) => {
       );
       setTimeout(() => {
         setQrs(_.filter(qrs, (qr) => qr._id !== id));
+        window.location.reload();
       }, 1000);
     } catch {
       console.error("Error when delete qr");
@@ -44,7 +45,7 @@ const QrsTags: FC<QrsProps> = ({ qrs: qrsProp }) => {
         const createdAt = moment(qr.createdAt).format("DD/MM/YYYY");
         return (
           <div key={qr._id} className={`qr ${qr.removed ? "removed" : ""}`}>
-            <h3>{qr.name}</h3>
+            <h3>{qr.name.replace("null", "QR code")}</h3>
             <div className="info">
               <div className="qrcode-info">
                 <QRCode {...custom}></QRCode>

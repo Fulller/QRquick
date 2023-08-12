@@ -1,10 +1,10 @@
 import { FC, useRef, RefObject } from "react";
 import { CustomQRCodeProps } from "../../../components/QRcode";
 import CustomQRCode from "../../../components/QRcode";
+import domtoimage from "dom-to-image";
+import { saveAs } from "file-saver";
 import _ from "lodash";
 import "./QRCodePattern.scss";
-
-import html2canvas from "html2canvas";
 
 interface QRCodePatternProps {
   qrProps: CustomQRCodeProps;
@@ -12,19 +12,17 @@ interface QRCodePatternProps {
 }
 const QRCodePattern: FC<QRCodePatternProps> = ({ qrProps, qrCode }) => {
   const qrCodeContainer: RefObject<HTMLDivElement> = useRef(null);
-  const downloadQRCode = () => {
-    const qrCodeContainerRef = qrCodeContainer.current;
-    if (!qrCodeContainerRef) {
-      console.error("QR code container not found.");
-      return;
-    }
-    html2canvas(qrCodeContainerRef).then((canvas) => {
-      const imageUrl = canvas.toDataURL("image/png");
-      const downloadLink = document.createElement("a");
-      downloadLink.href = imageUrl;
-      downloadLink.download = qrCode.name + "_qrcode.png";
-      downloadLink.click();
-    });
+  const handleDownloadQR = () => {
+    const element = qrCodeContainer.current;
+    if (!element) return;
+    domtoimage
+      .toBlob(element)
+      .then(function (blob: any) {
+        saveAs(blob, "downloaded-image.png");
+      })
+      .catch(function (error: any) {
+        console.error("Error:", error);
+      });
   };
   return (
     <div className="editor-feature" id="eye-patterns">
@@ -35,7 +33,7 @@ const QRCodePattern: FC<QRCodePatternProps> = ({ qrProps, qrCode }) => {
         <button
           id="download-btn"
           className="button style1"
-          onClick={downloadQRCode}
+          onClick={handleDownloadQR}
         >
           Download QR code
           <i className="fa-solid fa-download fa-bounce"></i>
