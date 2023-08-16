@@ -20,7 +20,9 @@ export const createQrcode = async (qrcodeData: any) => {
 };
 export const getQrcode = async (id: string = "") => {
   try {
-    const response = await axios.get(getApiUrl("/qrcode/custom/" + id));
+    const response = await axios.get(getApiUrl("/qrcode/custom/" + id), {
+      headers: getHeaders(),
+    });
     return response.data;
   } catch (error: any) {
     return error.response.data;
@@ -36,6 +38,16 @@ export const getQRcodeByOwner = async () => {
 export const deleteQRcodeById = async (id: string) => {
   try {
     const response = await axios.delete(getApiUrl("/qrcode/" + id));
+    return response.data;
+  } catch (error: any) {
+    return error.response.data;
+  }
+};
+export const editCustom = async (customData: any) => {
+  try {
+    const response = await axios.put(getApiUrl("/qrcode"), {
+      customData,
+    });
     return response.data;
   } catch (error: any) {
     return error.response.data;

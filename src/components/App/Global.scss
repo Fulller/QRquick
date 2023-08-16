@@ -162,3 +162,14 @@ div.ant-modal div.ant-modal-content {
     }
   }
 }
+div.ant-notification div.ant-notification-notice {
+  background-color: var(--bg-3);
+  border: 1px solid var(--bg-o-l-1);
+  .ant-notification-notice-content {
+    span i,
+    div,
+    a {
+      color: var(--text-3);
+    }
+  }
+}

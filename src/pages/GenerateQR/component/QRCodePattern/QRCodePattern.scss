@@ -16,6 +16,24 @@
     width: 100%;
     margin-top: 24px;
   }
+  #save-change-btn {
+    width: 100%;
+    margin-top: 12px;
+    background-color: var(--blue-1);
+    color: var(--text-d-3);
+    cursor: not-allowed;
+    i {
+      color: var(--text-d-3);
+    }
+    opacity: 0.2;
+    &.has-change {
+      opacity: 1;
+      cursor: pointer;
+      &:hover {
+        background-color: var(--blue-2);
+      }
+    }
+  }
   .info {
     margin-top: 24px;
     max-width: 264px;

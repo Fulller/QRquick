@@ -9,13 +9,18 @@ import _ from "lodash";
 import "./GenerateQR.scss";
 import { getValueQrcode } from "../../tools/url.tool";
 
-const reducer = (state: CustomQRCodeProps, action: any): CustomQRCodeProps => {
-  if (action?.name === "all") {
-    return action.payload;
-  }
-  return { ...state, [action.key]: action.payload };
-};
 const GenerateQR: FC = () => {
+  const [hasChange, setHasChange] = useState<boolean>(false);
+  const reducer = (
+    state: CustomQRCodeProps,
+    action: any
+  ): CustomQRCodeProps => {
+    if (action?.name === "all") {
+      return action.payload;
+    }
+    setHasChange(true);
+    return { ...state, [action.key]: action.payload };
+  };
   const { id } = useParams();
   const [qrProps, setStyleQR] = useReducer(reducer, {});
   const [qrCode, setQrcode] = useState(null);
@@ -54,7 +59,12 @@ const GenerateQR: FC = () => {
             ></EyePatterns>
           </div>
           <div className="wrap-qrcode">
-            <QRCodePattern qrCode={qrCode} qrProps={qrProps}></QRCodePattern>
+            <QRCodePattern
+              qrCode={qrCode}
+              qrProps={qrProps}
+              hasChange={hasChange}
+              setHasChange={setHasChange}
+            ></QRCodePattern>
           </div>
         </>
       ) : (
