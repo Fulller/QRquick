@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import _ from "lodash";
 import { Avatar } from "antd";
 import Tippy from "@tippyjs/react/headless";
-import { setLS } from "../../../tools/localStorage.tool";
+import { logOut } from "../../../services/user.service";
 
 import "./Header.scss";
 
@@ -34,8 +34,8 @@ const Header: FC = () => {
   const navigate = useNavigate();
   const [menuVisible, setMenuVisible] = useState<boolean>(false);
   const [avatarVisible, setAvatarVisible] = useState<boolean>(false);
-  function handleLogout() {
-    setLS("accesstoken", null);
+  async function handleLogout() {
+    await logOut();
     navigate("/");
     window.location.reload();
   }

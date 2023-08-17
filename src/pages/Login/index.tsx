@@ -7,8 +7,10 @@ const Login: FC = () => {
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const accessToken = searchParams.get("accesstoken");
+  const refreshToken = searchParams.get("refreshtoken");
   if (accessToken) {
     setLS("accesstoken", accessToken);
+    setLS("refreshtoken", refreshToken);
   }
   useEffect(() => {
     navigate("/");
