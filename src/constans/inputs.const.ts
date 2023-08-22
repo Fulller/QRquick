@@ -1,6 +1,7 @@
 import { fileType } from "./fileType.const";
 import { InputProps } from "../pages/Create/Input";
-import Joi from "joi";
+import Joi, { number } from "joi";
+import _ from "lodash";
 
 export enum InputName {
   LINK = "link",
@@ -11,6 +12,7 @@ export enum InputName {
   PASSWORD = "password",
   SSID = "ssid",
   SECURITY_TYPE = "securityType",
+  PHONE_NUMBER = "phoneNumber",
 }
 export const inputsProps: InputProps[] = [
   {
@@ -29,7 +31,19 @@ export const inputsProps: InputProps[] = [
     type: "text",
     standardForAPI: "data." + InputName.LINK,
     defaultValue: "",
-    validation: Joi.string().uri().required(),
+    validation: Joi.string()
+      .custom((value, helpers) => {
+        const urlPattern =
+          /^(https?:\/\/)?([a-zA-Z0-9-]+\.){1,}[a-zA-Z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+        if (!urlPattern.test(value)) {
+          return helpers.error("isLink");
+        }
+        return value;
+      })
+      .required()
+      .messages({
+        isLink: "Incorrect link",
+      }),
   },
   {
     name: InputName.IMAGE,
@@ -61,6 +75,11 @@ export const inputsProps: InputProps[] = [
     type: "select",
     standardForAPI: "data." + InputName.SECURITY_TYPE,
     defaultValue: "WPA",
+    valuesForSelect: [
+      { value: "WPA", title: "WPA" },
+      { value: "WEP", title: "WEP" },
+      { value: "nopass", title: "No pass" },
+    ],
   },
   {
     name: InputName.SSID,
@@ -69,7 +88,7 @@ export const inputsProps: InputProps[] = [
     type: "text",
     standardForAPI: "data." + InputName.SSID,
     defaultValue: "",
-    validation: Joi.string().required(),
+    validation: Joi.string().max(100).required(),
   },
   {
     name: InputName.PASSWORD,
@@ -79,5 +98,27 @@ export const inputsProps: InputProps[] = [
     standardForAPI: "data." + InputName.PASSWORD,
     defaultValue: "",
     validation: Joi.string().required().min(8).max(100),
+  },
+  {
+    name: InputName.PHONE_NUMBER,
+    label: "Phone",
+    placeholder: "Phone number",
+    type: "text",
+    defaultValue: "",
+    standardForAPI: "data." + InputName.PHONE_NUMBER,
+    validation: Joi.string()
+      .custom((value, helpers) => {
+        if (value.toString().length > 12) {
+          return helpers.error("string.maxLength");
+        }
+        if (!_.toNumber(value)) {
+          return helpers.error("number.invalid");
+        }
+        return value;
+      })
+      .messages({
+        "number.invalid": "Invalid phone number",
+        "string.maxLength": "The maximum length of a phone number is 12",
+      }),
   },
 ];

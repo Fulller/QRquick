@@ -11,7 +11,6 @@ export const createQrcode = async (qrcodeData: any) => {
       if (key === "data") {
         value = JSON.stringify(value);
       }
-      console.log({ key, value });
       formData.append(key, value);
     });
     const response = await axios.post(getApiUrl("/qrcode/create"), formData, {

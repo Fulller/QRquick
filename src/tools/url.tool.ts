@@ -17,10 +17,16 @@ const getAuthUrl = (path: string): string => {
 
 const getValueQrcode = (qrCode: any): string => {
   let value: string;
+  const data = _.get(qrCode, "content.data");
   switch (_.get(qrCode, "contentType")) {
     case featureName.WIFI: {
-      const { ssid, securityType, password } = _.get(qrCode, "content.data");
+      const { ssid, securityType, password } = data;
       value = `WIFI:S:${ssid};T:${securityType};P:${password};;`;
+      break;
+    }
+    case featureName.PHONE: {
+      const { phoneNumber } = data;
+      value = `TEL:${phoneNumber}`;
       break;
     }
     default:

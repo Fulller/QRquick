@@ -15,7 +15,7 @@ const Home: FC = () => {
               key={feature.path}
               className="feature button led"
             >
-              <img src={feature.icon} alt={feature.title} className="icon" />
+              <span className="icon">{feature.icon}</span>
               <span className="title">{_.upperFirst(feature.title)}</span>
             </Link>
           );

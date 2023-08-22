@@ -3,19 +3,14 @@ import QRform from "../Form";
 import { featureName } from "../../../constans/featureName.const";
 import { InputName } from "../../../constans/inputs.const";
 
-const Wifi: FC = () => {
+const Phone: FC = () => {
   return (
     <div className="create-feature">
       <QRform
-        nameInputs={[
-          InputName.SECURITY_TYPE,
-          InputName.SSID,
-          InputName.PASSWORD,
-          InputName.NAME,
-        ]}
-        contentType={featureName.WIFI}
+        nameInputs={[InputName.PHONE_NUMBER, InputName.NAME]}
+        contentType={featureName.PHONE}
       ></QRform>
     </div>
   );
 };
-export default Wifi;
+export default Phone;

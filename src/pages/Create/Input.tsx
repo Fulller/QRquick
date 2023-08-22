@@ -17,6 +17,7 @@ export interface InputProps {
   label?: string;
   standardForAPI?: string;
   validation?: AnySchema;
+  valuesForSelect?: any;
   defaultValue?: any;
 }
 
@@ -30,6 +31,7 @@ const Input: FC<InputProps> = ({
   label = "",
   validation,
   defaultValue = null,
+  valuesForSelect = [],
 }) => {
   const isMobile = useMediaQuery({ maxWidth: 576 });
   const [drapping, setDrapping] = useState<boolean>(false);
@@ -125,7 +127,7 @@ const Input: FC<InputProps> = ({
           <input
             className="input"
             title={name}
-            type={type}
+            type="text"
             placeholder={`${placeholder} ${optional ? "(optional)" : ""}`}
             spellCheck={false}
             onChange={handleTextChange}
@@ -138,9 +140,13 @@ const Input: FC<InputProps> = ({
         <label className="input-group">
           <span className="input-name">{_.upperFirst(label)}</span>
           <select className="input" title={name} onChange={handleSelect}>
-            <option value="WPA">WPA</option>
-            <option value="WEP">WEP</option>
-            <option value="nopass">No Pass</option>
+            {valuesForSelect.map((valueForSelect: any) => {
+              return (
+                <option value={valueForSelect.value} key={valueForSelect.value}>
+                  {valueForSelect.title}
+                </option>
+              );
+            })}
           </select>
         </label>
       )}

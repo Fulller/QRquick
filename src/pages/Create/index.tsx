@@ -19,7 +19,7 @@ const Create: FC = () => {
                 pathname.includes(feature.path) ? "active" : ""
               }`}
             >
-              <img src={feature.icon} alt={feature.title} className="icon" />
+              <span className="icon">{feature.icon}</span>
               <span className="title">{_.upperFirst(feature.title)}</span>
             </Link>
           );
