@@ -48,19 +48,23 @@ const QRform: FC<QRformProps> = ({ nameInputs = ["Name"], contentType }) => {
       if (!canSubmit) return;
       setCanSubmit(false);
       setSubmiting(true);
-      const { metadata: qrCode }: any = await createQrcode(
-        standardForAPI(state, {
-          Name: "name",
-          [featureName.LINK]: "data",
-          [featureName.AUDIO]: "file",
-          [featureName.IMAGE]: "file",
-          [featureName.PDF]: "file",
-        })
+      console.log(
+        standardForAPI(
+          state,
+          _.chain(inputsProps).keyBy("name").mapValues("standardForAPI").value()
+        )
       );
-      setSubmiting(false);
+      const { metadata: qrCode }: any = await createQrcode(
+        standardForAPI(
+          state,
+          _.chain(inputsProps).keyBy("name").mapValues("standardForAPI").value()
+        )
+      );
       navigate("/generate/" + qrCode._id);
+      setSubmiting(false);
+      setCanSubmit(true);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -75,6 +79,7 @@ const QRform: FC<QRformProps> = ({ nameInputs = ["Name"], contentType }) => {
         .filter((inputProps) => {
           return nameInputs.includes(inputProps.name);
         })
+        .sortBy((inputProps) => _.indexOf(nameInputs, inputProps.name))
         .map((inputProps) => {
           return (
             <Input

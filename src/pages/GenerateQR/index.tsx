@@ -6,8 +6,8 @@ import QRCodePattern from "./component/QRCodePattern";
 import { useParams } from "react-router-dom";
 import { getQrcode } from "../../services/qrcode.service";
 import _ from "lodash";
-import "./GenerateQR.scss";
 import { getValueQrcode } from "../../tools/url.tool";
+import "./GenerateQR.scss";
 
 const GenerateQR: FC = () => {
   const [hasChange, setHasChange] = useState<boolean>(false);
@@ -36,7 +36,7 @@ const GenerateQR: FC = () => {
   }, [id]);
   useEffect(() => {
     if (qrCode) {
-      const value = getValueQrcode(_.get(qrCode, "_id"));
+      let value: string = getValueQrcode(qrCode);
       const custom = _.chain(qrCode).get("custom").set("value", value).value();
       setStyleQR({ name: "all", payload: custom });
     } else {

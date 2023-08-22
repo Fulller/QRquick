@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { features } from "../../constans/feature.const";
 import { Link } from "react-router-dom";
+import _ from "lodash";
 import "./Home.scss";
 
 const Home: FC = () => {
@@ -15,7 +16,7 @@ const Home: FC = () => {
               className="feature button led"
             >
               <img src={feature.icon} alt={feature.title} className="icon" />
-              <span className="title">{feature.title}</span>
+              <span className="title">{_.upperFirst(feature.title)}</span>
             </Link>
           );
         })}

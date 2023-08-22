@@ -3,10 +3,13 @@ import Link from "../pages/Create/component/Link";
 import Image from "../pages/Create/component/Image";
 import Audio from "../pages/Create/component/Audio";
 import PDF from "../pages/Create/component/PDF";
+import Wifi from "../pages/Create/component/Wifi";
 import linkIcon from "../images/features/link.svg";
 import audioIcon from "../images/features/audio.svg";
 import imageIcon from "../images/features/image.svg";
 import pdfIcon from "../images/features/pdf.svg";
+import wifiIcon from "../images/features/wifi.svg";
+
 import { featureName } from "./featureName.const";
 
 export interface Feature {
@@ -34,11 +37,16 @@ export const features: Feature[] = [
     path: "/audio",
     Component: Audio,
   },
-
   {
     title: featureName.PDF,
     icon: pdfIcon,
     path: "/pdf",
     Component: PDF,
+  },
+  {
+    title: "Wi-Fi",
+    icon: wifiIcon,
+    path: "/wifi",
+    Component: Wifi,
   },
 ];

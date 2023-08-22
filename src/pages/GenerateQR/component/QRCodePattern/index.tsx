@@ -76,7 +76,7 @@ const QRCodePattern: FC<QRCodePatternProps> = ({
           </p>
           <p className="info-item">
             <span>Type: </span>
-            {_.get(qrCode, "contentType")}
+            {_.chain(qrCode).get("contentType", "QR code").upperFirst().value()}
           </p>
           <p className="info-item">
             <span>Scans: </span>

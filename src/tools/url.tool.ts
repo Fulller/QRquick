@@ -1,4 +1,6 @@
 import { apiUrl, authUrl } from "../configs";
+import { featureName } from "../constans/featureName.const";
+import _ from "lodash";
 
 function isNotURL(str: string) {
   const urlRegex =
@@ -13,8 +15,18 @@ const getAuthUrl = (path: string): string => {
   return `${authUrl}${path}`;
 };
 
-const getValueQrcode = (id: string): string => {
-  return getApiUrl("/qrcode/" + id);
+const getValueQrcode = (qrCode: any): string => {
+  let value: string;
+  switch (_.get(qrCode, "contentType")) {
+    case featureName.WIFI: {
+      const { ssid, securityType, password } = _.get(qrCode, "content.data");
+      value = `WIFI:S:${ssid};T:${securityType};P:${password};;`;
+      break;
+    }
+    default:
+      value = getApiUrl("/qrcode/" + _.get(qrCode, "_id"));
+  }
+  return value;
 };
 
 export { getApiUrl, getAuthUrl, isNotURL, getValueQrcode };

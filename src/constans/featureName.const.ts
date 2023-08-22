@@ -1,6 +1,7 @@
 export enum featureName {
-  LINK = "Link",
-  IMAGE = "Image",
-  AUDIO = "Audio",
-  PDF = "PDF",
+  LINK = "link",
+  IMAGE = "image",
+  AUDIO = "audio",
+  PDF = "pdf",
+  WIFI = "wifi",
 }

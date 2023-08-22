@@ -52,7 +52,13 @@ const QrsTags: FC<QrsProps> = ({ qrs: qrsProp }) => {
               </div>
               <div className="type-and-created">
                 <p>
-                  Type: <span>{qr.contentType}</span>{" "}
+                  Type:{" "}
+                  <span>
+                    {_.chain(qr)
+                      .get("contentType", "QR code")
+                      .upperFirst()
+                      .value()}
+                  </span>{" "}
                 </p>
                 <p>
                   Created: <span>{createdAt}</span>

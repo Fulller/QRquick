@@ -3,14 +3,19 @@ import QRform from "../Form";
 import { featureName } from "../../../constans/featureName.const";
 import { InputName } from "../../../constans/inputs.const";
 
-const Audio: FC = () => {
+const Link: FC = () => {
   return (
     <div className="create-feature">
       <QRform
-        nameInputs={[InputName.AUDIO, InputName.NAME]}
-        contentType={featureName.AUDIO}
+        nameInputs={[
+          InputName.SECURITY_TYPE,
+          InputName.SSID,
+          InputName.PASSWORD,
+          InputName.NAME,
+        ]}
+        contentType={featureName.WIFI}
       ></QRform>
     </div>
   );
 };
-export default Audio;
+export default Link;

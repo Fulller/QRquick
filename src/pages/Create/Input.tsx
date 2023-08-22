@@ -3,10 +3,9 @@ import { fileType as fileTypeEnum } from "../../constans/fileType.const";
 import { useDropzone } from "react-dropzone";
 import { formatFileSize } from "../../tools/file.tool";
 import _ from "lodash";
-import { featureName } from "../../constans/featureName.const";
-import { isNotURL } from "../../tools/url.tool";
 import { maxSize } from "../../constans/fileType.const";
 import { useMediaQuery } from "react-responsive";
+import { AnySchema } from "joi";
 
 export interface InputProps {
   name: string;
@@ -15,6 +14,10 @@ export interface InputProps {
   optional?: boolean;
   fileType?: fileTypeEnum;
   setFormValue?: any;
+  label?: string;
+  standardForAPI?: string;
+  validation?: AnySchema;
+  defaultValue?: any;
 }
 
 const Input: FC<InputProps> = ({
@@ -24,6 +27,9 @@ const Input: FC<InputProps> = ({
   optional = false,
   fileType = fileTypeEnum.Image,
   setFormValue,
+  label = "",
+  validation,
+  defaultValue = null,
 }) => {
   const isMobile = useMediaQuery({ maxWidth: 576 });
   const [drapping, setDrapping] = useState<boolean>(false);
@@ -51,28 +57,39 @@ const Input: FC<InputProps> = ({
       setDrapping(false);
     },
   });
-  const [value, setValue] = useState<File | string | null>(null);
+  const [value, setValue] = useState<File | string | null>(defaultValue);
   const handleTextChange = (event: ChangeEvent<HTMLInputElement>) => {
     const valueString: string = event.target.value.trim();
-    if (name === featureName.LINK && valueString && isNotURL(valueString)) {
-      setErrString("example url: https://qrquick.vercel.app/");
-      setValue(null);
-      return;
-    }
     setErrString(null);
-    setValue(valueString);
+    setValue(valueString.trim());
   };
-  function handleChangeInput(e: ChangeEvent<HTMLInputElement>) {
+  const handleTextValidate = () => {
+    if (validation) {
+      const { error, value: valuex } = validation.validate(value);
+      if (error) {
+        const { message } = error;
+        setErrString(_.replace(message, "value", _.upperFirst(name)));
+        setValue(null);
+      } else {
+        setErrString(null);
+        setValue(valuex);
+      }
+    }
+  };
+  function handleChangeFile(e: ChangeEvent<HTMLInputElement>) {
     setValue(_.get(e, "target.files[0]", null));
+  }
+  function handleSelect(e: any) {
+    setValue(_.get(e, "target.value"));
   }
   useEffect(() => {
     if (setFormValue) {
       setFormValue({ name: name, payload: value });
     }
-  }, [name, value, setFormValue]);
+  }, [name, value, setFormValue, validation]);
   return (
-    <>
-      {type === "file" ? (
+    <div className="wrap-input-group">
+      {type === "file" && (
         <label
           {...(!isMobile ? getRootProps() : {})}
           className={`input-group input-group-file ${
@@ -82,7 +99,7 @@ const Input: FC<InputProps> = ({
           {isMobile && (
             <input
               type="file"
-              onChange={handleChangeInput}
+              onChange={handleChangeFile}
               hidden
               accept={fileType}
             />
@@ -101,9 +118,10 @@ const Input: FC<InputProps> = ({
             </div>
           )}
         </label>
-      ) : (
+      )}
+      {type === "text" && (
         <label className="input-group">
-          <span className="input-name">{name}</span>
+          <span className="input-name">{_.upperFirst(label)}</span>
           <input
             className="input"
             title={name}
@@ -111,11 +129,23 @@ const Input: FC<InputProps> = ({
             placeholder={`${placeholder} ${optional ? "(optional)" : ""}`}
             spellCheck={false}
             onChange={handleTextChange}
+            onBlur={handleTextValidate}
+            defaultValue={defaultValue}
           />
         </label>
       )}
-      <p className="errString">{errString}</p>
-    </>
+      {type === "select" && (
+        <label className="input-group">
+          <span className="input-name">{_.upperFirst(label)}</span>
+          <select className="input" title={name} onChange={handleSelect}>
+            <option value="WPA">WPA</option>
+            <option value="WEP">WEP</option>
+            <option value="nopass">No Pass</option>
+          </select>
+        </label>
+      )}
+      {errString && <p className="errString">{errString}</p>}
+    </div>
   );
 };
 

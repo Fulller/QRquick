@@ -2,6 +2,7 @@
 import { FC } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { features } from "../../constans/feature.const";
+import _ from "lodash";
 import "./Create.scss";
 
 const Create: FC = () => {
@@ -19,7 +20,7 @@ const Create: FC = () => {
               }`}
             >
               <img src={feature.icon} alt={feature.title} className="icon" />
-              <span className="title">{feature.title}</span>
+              <span className="title">{_.upperFirst(feature.title)}</span>
             </Link>
           );
         })}

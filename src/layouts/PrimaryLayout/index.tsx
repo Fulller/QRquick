@@ -18,7 +18,7 @@ const Primarylayout: FC<PrimarylayoutProps> = ({
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset;
-      setIsScrolled(scrollTop > 100);
+      setIsScrolled(scrollTop > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => {
