@@ -7,10 +7,7 @@ export interface PrimarylayoutProps {
   title: string;
 }
 
-const Primarylayout: FC<PrimarylayoutProps> = ({
-  children,
-  title = "Sample client",
-}) => {
+const Primarylayout: FC<PrimarylayoutProps> = ({ children, title = "" }) => {
   useEffect(() => {
     document.title = title;
   }, [title]);

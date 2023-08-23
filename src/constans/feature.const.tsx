@@ -5,6 +5,7 @@ import Audio from "../pages/Create/component/Audio";
 import PDF from "../pages/Create/component/PDF";
 import Wifi from "../pages/Create/component/Wifi";
 import Phone from "../pages/Create/component/Phone";
+import Text from "../pages/Create/component/Text";
 
 import { featureName } from "./featureName.const";
 
@@ -50,5 +51,11 @@ export const features: Feature[] = [
     icon: <i className="fa-solid fa-phone"></i>,
     path: "/phone",
     Component: Phone,
+  },
+  {
+    title: "Text",
+    icon: <i className="fa-solid fa-file-lines"></i>,
+    path: "/text",
+    Component: Text,
   },
 ];

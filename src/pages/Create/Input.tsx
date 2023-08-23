@@ -6,6 +6,8 @@ import _ from "lodash";
 import { maxSize } from "../../constans/fileType.const";
 import { useMediaQuery } from "react-responsive";
 import { AnySchema } from "joi";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export interface InputProps {
   name: string;
@@ -84,11 +86,15 @@ const Input: FC<InputProps> = ({
   function handleSelect(e: any) {
     setValue(_.get(e, "target.value"));
   }
+  const handleTextEditorChange = (value: string) => {
+    setValue(value);
+  };
   useEffect(() => {
     if (setFormValue) {
       setFormValue({ name: name, payload: value });
     }
   }, [name, value, setFormValue, validation]);
+
   return (
     <div className="wrap-input-group">
       {type === "file" && (
@@ -149,6 +155,27 @@ const Input: FC<InputProps> = ({
             })}
           </select>
         </label>
+      )}
+      {type === "text-editor" && (
+        <ReactQuill
+          id="text-editor"
+          value={value?.toString()}
+          onChange={handleTextEditorChange}
+          modules={{
+            toolbar: [
+              "bold",
+              "italic",
+              "underline",
+              "strike",
+              "color",
+              "blockquote",
+              "code-block",
+              "align",
+              "link",
+              "image",
+            ],
+          }}
+        />
       )}
       {errString && <p className="errString">{errString}</p>}
     </div>

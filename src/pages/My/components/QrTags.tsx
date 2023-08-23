@@ -39,7 +39,7 @@ const QrsTags: FC<QrsProps> = ({ qrs: qrsProp }) => {
     <div className="qrs">
       {qrs.map((qr: any) => {
         const custom: any = _.chain(qr.custom)
-          .set("value", getValueQrcode(qr._id))
+          .set("value", getValueQrcode(qr))
           .set("size", 120)
           .value();
         const createdAt = moment(qr.createdAt).format("DD/MM/YYYY");

@@ -5,22 +5,17 @@ import { setLS } from "../../tools/localStorage.tool";
 const Login: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const searchParams = new URLSearchParams(location.search);
-  const accessToken = searchParams.get("accesstoken");
-  const refreshToken = searchParams.get("refreshtoken");
-  if (accessToken) {
-    setLS("accesstoken", accessToken);
-    setLS("refreshtoken", refreshToken);
-  }
+  const searchParams: URLSearchParams = new URLSearchParams(location.search);
+  const accessToken: string | null = searchParams.get("accesstoken");
+  const refreshToken: string | null = searchParams.get("refreshtoken");
+
+  accessToken && setLS("accesstoken", accessToken);
+  refreshToken && setLS("refreshtoken", refreshToken);
+
   useEffect(() => {
     navigate("/");
   }, [navigate]);
-  return (
-    <main id="login-page">
-      <h1>Login Page</h1>
-      {accessToken && <p>Access Token: {accessToken}</p>}
-    </main>
-  );
+  return <main id="login-page"></main>;
 };
 
 export default Login;

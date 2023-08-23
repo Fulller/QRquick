@@ -56,3 +56,11 @@ export const editCustom = async (customData: any) => {
     return error.response.data;
   }
 };
+export const getTextContent = async (id: string) => {
+  try {
+    const response = await axios.get(getApiUrl("/content/text/" + id));
+    return response.data;
+  } catch (error: any) {
+    return error.response.data;
+  }
+};

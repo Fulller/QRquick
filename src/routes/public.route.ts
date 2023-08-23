@@ -1,17 +1,22 @@
 import { FC } from "react";
 import PrimaryLayout, { PrimarylayoutProps } from "../layouts/PrimaryLayout";
+import ContentLayout, { ContentlayoutProps } from "../layouts/ContentLayout";
+
 import Home from "../pages/Home";
 import CreateQR from "../pages/Create";
 import MyQR from "../pages/My";
 import GenerateQR from "../pages/GenerateQR";
 import Test from "../pages/Test";
 import Login from "../pages/Login";
+import NotFound from "../pages/NotFound";
+import ShowContent from "../pages/ShowContent";
+
 import { features } from "../constans/feature.const";
 import _ from "lodash";
 interface HomeProps {}
 
 export interface RouteType {
-  Layout: FC<PrimarylayoutProps>;
+  Layout: FC<PrimarylayoutProps | ContentlayoutProps>;
   Page: FC<HomeProps>;
   path: string;
   title: string;
@@ -69,6 +74,18 @@ const publicRoutes: RouteType[] = [
     Page: Login,
     path: "/login",
     title: "Login",
+  },
+  {
+    Layout: PrimaryLayout,
+    Page: NotFound,
+    path: "*",
+    title: "NotFound",
+  },
+  {
+    Layout: ContentLayout,
+    Page: ShowContent,
+    path: "/content/:type/:id",
+    title: "Content",
   },
 ];
 

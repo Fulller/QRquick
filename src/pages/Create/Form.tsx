@@ -7,6 +7,7 @@ import { standardForAPI } from "../../tools/lodash.toll";
 import { createQrcode } from "../../services/qrcode.service";
 import { useNavigate } from "react-router-dom";
 import loadingSVG from "../../images/loading/loading.svg";
+import { InputName } from "../../constans/inputs.const";
 
 interface QRformProps {
   nameInputs: string[];
@@ -62,6 +63,9 @@ const QRform: FC<QRformProps> = ({ nameInputs = ["Name"], contentType }) => {
     }
   };
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (nameInputs.includes(InputName.TEXT_EDITOR)) {
+      return;
+    }
     if (event.key === "Enter") {
       event.preventDefault();
       handleSubmit();

@@ -1,6 +1,6 @@
 import { fileType } from "./fileType.const";
 import { InputProps } from "../pages/Create/Input";
-import Joi, { number } from "joi";
+import Joi from "joi";
 import _ from "lodash";
 
 export enum InputName {
@@ -13,6 +13,7 @@ export enum InputName {
   SSID = "ssid",
   SECURITY_TYPE = "securityType",
   PHONE_NUMBER = "phoneNumber",
+  TEXT_EDITOR = "textEditor",
 }
 export const inputsProps: InputProps[] = [
   {
@@ -120,5 +121,13 @@ export const inputsProps: InputProps[] = [
         "number.invalid": "Invalid phone number",
         "string.maxLength": "The maximum length of a phone number is 12",
       }),
+  },
+  {
+    name: InputName.TEXT_EDITOR,
+    label: "Text Editor",
+    placeholder: "Text Editor placehoder",
+    type: "text-editor",
+    defaultValue: "",
+    standardForAPI: "data." + InputName.TEXT_EDITOR,
   },
 ];

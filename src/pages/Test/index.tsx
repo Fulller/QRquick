@@ -1,14 +1,42 @@
 import { FC, useState } from "react";
-import QRcode from "../components/QRcode";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const Home: FC = () => {
-  const value = "TEL:113";
+  const [content, setContent] = useState("");
+
+  const handleChange = (value: any) => {
+    setContent(value);
+  };
+  const formats = [
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "color",
+    "background",
+    "script",
+    "header",
+    "blockquote",
+    "code-block",
+    "indent",
+    "list",
+    "direction",
+    "align",
+    "link",
+    "image",
+    "video",
+    "formula",
+  ];
+
   return (
     <main id="home-page">
-      <QRcode value={value}></QRcode>
+      <ReactQuill value={content} onChange={handleChange} formats={formats} />
+      <div dangerouslySetInnerHTML={{ __html: content }} />
     </main>
   );
 };
-// ("WIFI:S:Le Binh Bao;T:WPA;P:maybotbaodumtao;H:false;;");
-// WIFI:S:Le Binh Bao;T:WPA;P:maybotbaodumtao;H:false;;
+
 export default Home;

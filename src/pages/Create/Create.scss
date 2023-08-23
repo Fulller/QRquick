@@ -159,6 +159,35 @@
           }
         }
       }
+      #text-editor {
+        background-color: var(--bg-2);
+        border-radius: 8px;
+        border: none;
+        outline: none;
+
+        .ql-toolbar {
+          border-radius: 8px 8px 0 0;
+          background-color: var(--main);
+          border: none;
+          * {
+            color: var(--text-3);
+          }
+        }
+        .ql-container {
+          border-radius: 0 0 8px 8px;
+          border: 2px solid transparent;
+          border-top: 0;
+          background-color: var(--bg-O-1);
+          * {
+            color: var(--text-3);
+          }
+        }
+        &:focus-within {
+          .ql-container {
+            border-color: var(--main);
+          }
+        }
+      }
 
       #create-btn {
         margin: 32px 0 16px 0;
@@ -174,6 +203,9 @@
         &.disable {
           opacity: 0.2;
           cursor: not-allowed;
+          &:hover {
+            background-color: var(--main);
+          }
         }
         &:hover {
           background-color: var(--main-o-1);
