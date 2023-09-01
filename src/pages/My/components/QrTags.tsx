@@ -7,12 +7,14 @@ import { Link } from "react-router-dom";
 import OptionsBtn from "./OptionsBtn";
 import "../My.scss";
 import { deleteQRcodeById } from "../../../services/qrcode.service";
+import { useText } from "../../../hooks";
 
 interface QrsProps {
   qrs: any[];
 }
 const QrsTags: FC<QrsProps> = ({ qrs: qrsProp }) => {
   const [qrs, setQrs] = useState<any[]>([]);
+  const text = useText();
   useEffect(() => {
     setQrs(qrsProp);
   }, [qrsProp]);
@@ -52,28 +54,30 @@ const QrsTags: FC<QrsProps> = ({ qrs: qrsProp }) => {
               </div>
               <div className="type-and-created">
                 <p>
-                  Type:{" "}
+                  {text("Type")}:{" "}
                   <span>
-                    {_.chain(qr)
-                      .get("contentType", "QR code")
-                      .upperFirst()
-                      .value()}
+                    {text(
+                      _.chain(qr)
+                        .get("contentType", "QR code")
+                        .upperFirst()
+                        .value()
+                    )}
                   </span>{" "}
                 </p>
                 <p>
-                  Created: <span>{createdAt}</span>
+                  {text("Created")}: <span>{createdAt}</span>
                 </p>
               </div>
               <div className="total-scan">
                 <span className="material-symbols-outlined">
                   qr_code_scanner
                 </span>
-                <span>Total scan</span>
+                <span>{text("Total scan")}</span>
                 <span className="number">{qr.totalScan}</span>
               </div>
               <div className="actions">
                 <Link to={"/generate/" + qr._id} className="button style1">
-                  Download
+                  {text("Download")}
                   <i className="fa-solid fa-download fa-bounce"></i>
                 </Link>
                 <OptionsBtn id={qr._id} removeQr={removeQr}></OptionsBtn>

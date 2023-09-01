@@ -2,9 +2,11 @@ import { FC } from "react";
 import { features } from "../../constans/feature.const";
 import { Link } from "react-router-dom";
 import _ from "lodash";
+import { useText } from "../../hooks";
 import "./Home.scss";
 
 const Home: FC = () => {
+  const text = useText();
   return (
     <main id="home-page">
       <div className="features  ">
@@ -16,7 +18,7 @@ const Home: FC = () => {
               className="feature button led"
             >
               <span className="icon">{feature.icon}</span>
-              <span className="title">{_.upperFirst(feature.title)}</span>
+              <span className="title">{text(feature.title)}</span>
             </Link>
           );
         })}

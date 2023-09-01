@@ -62,7 +62,8 @@
         overflow: hidden;
         text-overflow: ellipsis;
         margin-bottom: 12px;
-        color: var(--main);
+        font-weight: 700;
+        text-align: start;
       }
       .info {
         display: grid;
@@ -130,6 +131,9 @@
         }
       }
       @media (max-width: 450px) {
+        h3 {
+          text-align: center;
+        }
         .info {
           grid-template-columns: auto;
           align-items: center;
@@ -182,9 +186,6 @@
         background-color: var(--bg-o-2);
         outline: none;
         border: none;
-        a {
-          color: var(--main);
-        }
       }
     }
   }

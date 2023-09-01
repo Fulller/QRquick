@@ -2,6 +2,7 @@ import { FC, ReactNode, useState } from "react";
 import Tippy from "@tippyjs/react/headless";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "antd";
+import { useText } from "../../../hooks";
 import "../My.scss";
 
 interface OptionsBtnProps {
@@ -19,6 +20,7 @@ const OptionsBtn: FC<OptionsBtnProps> = ({ id, removeQr }) => {
   const navigate = useNavigate();
   const [visible, setVisible] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
+  const text = useText();
 
   const options: Option[] = [
     {
@@ -41,7 +43,7 @@ const OptionsBtn: FC<OptionsBtnProps> = ({ id, removeQr }) => {
       },
       modal: (
         <Modal
-          title="Remove QR code?"
+          title={text("Remove QR code?")}
           centered
           open={open}
           onOk={() => {
@@ -52,10 +54,11 @@ const OptionsBtn: FC<OptionsBtnProps> = ({ id, removeQr }) => {
             setOpen(false);
           }}
           width={1000}
-          okText="Remove"
+          okText={text("Remove")}
+          cancelText={text("Cancel")}
           okType="danger"
         >
-          Are you sure you want to remove this QR code?
+          {text("Are you sure you want to remove this QR code?")}
         </Modal>
       ),
     },
@@ -74,7 +77,7 @@ const OptionsBtn: FC<OptionsBtnProps> = ({ id, removeQr }) => {
                 <div key={option.title} className="wrap-option">
                   <div className="option" onClick={option.handleClick}>
                     <span>{option.icon}</span>
-                    <span>{option.title}</span>
+                    <span>{text(option.title)}</span>
                   </div>
                   {option.modal}
                 </div>
@@ -92,7 +95,7 @@ const OptionsBtn: FC<OptionsBtnProps> = ({ id, removeQr }) => {
           data-tooltip-id={`option-tooltip-${id}`}
           onClick={() => setVisible(!visible)}
         >
-          Options
+          {text("Options")}
           <i className="fa-solid fa-gear fa-spin-pulse"></i>
         </button>
       </Tippy>

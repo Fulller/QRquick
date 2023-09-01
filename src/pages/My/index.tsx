@@ -52,6 +52,7 @@ const QrsTags: FC = () => {
               total={qrs.length}
               pageSize={PAGE_SIZE}
               onChange={onChange}
+              responsive={true}
             />
           </div>
         </>

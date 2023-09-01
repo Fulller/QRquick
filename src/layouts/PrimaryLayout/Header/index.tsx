@@ -8,6 +8,10 @@ import _ from "lodash";
 import { Avatar } from "antd";
 import Tippy from "@tippyjs/react/headless";
 import { logOut } from "../../../services/user.service";
+import { useText } from "../../../hooks";
+import { useDispatch } from "react-redux";
+import settingSlide from "../../../redux/slides/setting.slide";
+import { languageEnum } from "../../../constans/setting.init.const";
 
 import "./Header.scss";
 
@@ -28,17 +32,31 @@ const menu: MenuItem[] = [
     icon: <i className="fa-solid fa-qrcode"></i>,
   },
 ];
+interface LanguageItem {
+  id: string;
+  title: string;
+}
+const languages: LanguageItem[] = [
+  { id: languageEnum.VI, title: "Tiếng Việt" },
+  { id: languageEnum.EN, title: "English" },
+];
 const Header: FC = () => {
+  const dispatch = useDispatch();
   const user = useSelector(selector.user);
+  const language = useSelector(selector.language);
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [menuVisible, setMenuVisible] = useState<boolean>(false);
+  const [languageVisible, setLanguageVisible] = useState<boolean>(false);
+  const [languageMenuVisible, setLanguageMenuVisible] =
+    useState<boolean>(false);
   const [avatarVisible, setAvatarVisible] = useState<boolean>(false);
   async function handleLogout() {
     await logOut();
     navigate("/");
     window.location.reload();
   }
+  const text = useText();
 
   return (
     <header id="header">
@@ -62,18 +80,52 @@ const Header: FC = () => {
                         className="tooltip-item"
                       >
                         <span className="icon">{item.icon}</span>
-                        <span className="title">{item.title}</span>
+                        <span className="title">{text(item.title)}</span>
                       </Link>
                     );
                   })}
                 </div>
                 <div className="part">
+                  <div
+                    className="tooltip-item"
+                    onClick={() => setLanguageMenuVisible(!languageMenuVisible)}
+                  >
+                    <span className="icon">
+                      <i className="fa-solid fa-language"></i>
+                    </span>
+                    <span className="title">{text("Language")}</span>
+                    <span className="more">
+                      <i className="fa-solid fa-caret-down"></i>
+                    </span>
+                  </div>
+                  {languageMenuVisible && (
+                    <div className="tooltip-item-more">
+                      {languages.map((language) => {
+                        return (
+                          <div
+                            className="tooltip-item-more-item"
+                            key={language.id + "#1"}
+                            onClick={() => {
+                              dispatch(
+                                settingSlide.actions.setLanguage(language.id)
+                              );
+                              setLanguageMenuVisible(false);
+                              setMenuVisible(false);
+                            }}
+                          >
+                            {language.title}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
                   {user ? (
                     <button onClick={handleLogout} className="tooltip-item">
                       <span className="icon">
                         <i className="fa-solid fa-right-from-bracket"></i>
                       </span>
-                      <span className="title">Logout</span>
+                      <span className="title">{text("Logout")}</span>
                     </button>
                   ) : (
                     <Link
@@ -83,7 +135,7 @@ const Header: FC = () => {
                       <span className="icon">
                         <i className="fa-brands fa-google"></i>
                       </span>
-                      <span className="title">Login with google</span>
+                      <span className="title">{text("Login with")} google</span>
                     </Link>
                   )}
                 </div>
@@ -120,13 +172,49 @@ const Header: FC = () => {
                   pathname.includes(item.path) ? "active" : ""
                 }`}
               >
-                {item.title}
+                {text(item.title)}
               </Link>
             );
           })}
         </div>
       </div>
       <div className="right">
+        <Tippy
+          interactive={true}
+          visible={languageVisible}
+          onClickOutside={() => {
+            setLanguageVisible(false);
+          }}
+          placement="top-end"
+          render={(attrs) => {
+            return (
+              <div id="language-popper">
+                {languages.map((language) => {
+                  return (
+                    <div
+                      className="language-item"
+                      key={language.id}
+                      onClick={() => {
+                        dispatch(settingSlide.actions.setLanguage(language.id));
+                        setLanguageVisible(false);
+                      }}
+                    >
+                      {language.title}
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          }}
+        >
+          <button
+            id="lan-btn"
+            onClick={() => setLanguageVisible(!languageVisible)}
+          >
+            {_.upperCase(language)}
+            <i className="fa-solid fa-chevron-down"></i>
+          </button>
+        </Tippy>
         {user ? (
           <Tippy
             interactive={true}
@@ -145,7 +233,7 @@ const Header: FC = () => {
                           className="tooltip-item"
                         >
                           <span className="icon">{item.icon}</span>
-                          <span className="title">{item.title}</span>
+                          <span className="title">{text(item.title)}</span>
                         </Link>
                       );
                     })}
@@ -155,7 +243,7 @@ const Header: FC = () => {
                       <span className="icon">
                         <i className="fa-solid fa-right-from-bracket"></i>
                       </span>
-                      <span className="title">Logout</span>
+                      <span className="title">{text("Logout")}</span>
                     </button>
                   </div>
                 </div>
@@ -182,7 +270,8 @@ const Header: FC = () => {
             href={getAuthUrl("/auth/google")}
             className="button  led login"
           >
-            Login with <i className="fa-brands fa-google"></i>
+            <span className="text-lg">{text("Login with")}</span>
+            <i className="fa-brands fa-google"></i>
           </a>
         )}
       </div>

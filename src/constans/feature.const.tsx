@@ -7,8 +7,6 @@ import Wifi from "../pages/Create/component/Wifi";
 import Phone from "../pages/Create/component/Phone";
 import Text from "../pages/Create/component/Text";
 
-import { featureName } from "./featureName.const";
-
 export interface Feature {
   title: string;
   icon: any;
@@ -17,31 +15,31 @@ export interface Feature {
 }
 export const features: Feature[] = [
   {
-    title: featureName.LINK,
+    title: "Link",
     icon: <i className="fa-solid fa-link"></i>,
     path: "/link",
     Component: Link,
   },
   {
-    title: featureName.IMAGE,
+    title: "Image",
     icon: <i className="fa-solid fa-image"></i>,
     path: "/image",
     Component: Image,
   },
   {
-    title: featureName.AUDIO,
+    title: "Audio",
     icon: <i className="fa-solid fa-music"></i>,
     path: "/audio",
     Component: Audio,
   },
   {
-    title: featureName.PDF,
+    title: "PDF",
     icon: <i className="fa-solid fa-file-pdf"></i>,
     path: "/pdf",
     Component: PDF,
   },
   {
-    title: "Wi-Fi",
+    title: "Wi-fi",
     icon: <i className="fa-solid fa-wifi"></i>,
     path: "/wifi",
     Component: Wifi,

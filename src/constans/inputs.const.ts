@@ -19,7 +19,7 @@ export const inputsProps: InputProps[] = [
   {
     name: InputName.NAME,
     label: InputName.NAME,
-    placeholder: "Name your QR",
+    placeholder: "Name placeholder",
     type: "text",
     optional: true,
     standardForAPI: InputName.NAME,
@@ -28,7 +28,7 @@ export const inputsProps: InputProps[] = [
   {
     name: InputName.LINK,
     label: InputName.LINK,
-    placeholder: "Put your link here",
+    placeholder: "Link placeholder",
     type: "text",
     standardForAPI: "data." + InputName.LINK,
     defaultValue: "",
@@ -49,7 +49,7 @@ export const inputsProps: InputProps[] = [
   {
     name: InputName.IMAGE,
     label: InputName.IMAGE,
-    placeholder: "Upload Image",
+    placeholder: "Image placeholder",
     type: "file",
     fileType: fileType.Image,
     standardForAPI: "file",
@@ -57,7 +57,7 @@ export const inputsProps: InputProps[] = [
   {
     name: InputName.AUDIO,
     label: InputName.AUDIO,
-    placeholder: "Upload Audio",
+    placeholder: "Audio placeholder",
     type: "file",
     fileType: fileType.Audio,
     standardForAPI: "file",
@@ -65,14 +65,14 @@ export const inputsProps: InputProps[] = [
   {
     name: InputName.PDF,
     label: InputName.PDF,
-    placeholder: "Upload PDF",
+    placeholder: "PDF placeholder",
     type: "file",
     fileType: fileType.PDF,
     standardForAPI: "file",
   },
   {
     name: InputName.SECURITY_TYPE,
-    label: "Security Type",
+    label: "Security type",
     type: "select",
     standardForAPI: "data." + InputName.SECURITY_TYPE,
     defaultValue: "WPA",
@@ -84,8 +84,8 @@ export const inputsProps: InputProps[] = [
   },
   {
     name: InputName.SSID,
-    label: InputName.SSID,
-    placeholder: "Wifi name",
+    label: "SSID",
+    placeholder: "SSID placeholder",
     type: "text",
     standardForAPI: "data." + InputName.SSID,
     defaultValue: "",
@@ -93,8 +93,8 @@ export const inputsProps: InputProps[] = [
   },
   {
     name: InputName.PASSWORD,
-    label: InputName.PASSWORD,
-    placeholder: "Password for wi-fi",
+    label: "Password",
+    placeholder: "Password placeholder",
     type: "text",
     standardForAPI: "data." + InputName.PASSWORD,
     defaultValue: "",
@@ -103,7 +103,7 @@ export const inputsProps: InputProps[] = [
   {
     name: InputName.PHONE_NUMBER,
     label: "Phone",
-    placeholder: "Phone number",
+    placeholder: "Phone placeholder",
     type: "text",
     defaultValue: "",
     standardForAPI: "data." + InputName.PHONE_NUMBER,

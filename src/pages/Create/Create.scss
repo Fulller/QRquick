@@ -32,6 +32,18 @@
       grid-template-columns: 1fr 1fr;
     }
   }
+  @media (max-width: 350px) {
+    .features {
+      .feature {
+        .icon {
+          font-size: 20px;
+        }
+        .title {
+          font-size: 14px;
+        }
+      }
+    }
+  }
   .create-feature {
     .QR-from {
       margin-top: 32px;

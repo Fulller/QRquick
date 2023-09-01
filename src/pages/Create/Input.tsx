@@ -8,6 +8,7 @@ import { useMediaQuery } from "react-responsive";
 import { AnySchema } from "joi";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useText } from "../../hooks";
 
 export interface InputProps {
   name: string;
@@ -35,6 +36,7 @@ const Input: FC<InputProps> = ({
   defaultValue = null,
   valuesForSelect = [],
 }) => {
+  const text = useText();
   const isMobile = useMediaQuery({ maxWidth: 576 });
   const [drapping, setDrapping] = useState<boolean>(false);
   const [errString, setErrString] = useState<string | null>(null);
@@ -94,7 +96,7 @@ const Input: FC<InputProps> = ({
       setFormValue({ name: name, payload: value });
     }
   }, [name, value, setFormValue, validation]);
-
+  console.log({ label });
   return (
     <div className="wrap-input-group">
       {type === "file" && (
@@ -115,7 +117,7 @@ const Input: FC<InputProps> = ({
           {!value ? (
             <p className="placeholder">
               <i className="fa-solid fa-upload fa-bounce upload-icon"></i>
-              {placeholder}
+              {text(placeholder)}
             </p>
           ) : (
             <div className="file">
@@ -129,12 +131,14 @@ const Input: FC<InputProps> = ({
       )}
       {type === "text" && (
         <label className="input-group">
-          <span className="input-name">{_.upperFirst(label)}</span>
+          <span className="input-name">{text(_.upperFirst(label))}</span>
           <input
             className="input"
             title={name}
             type="text"
-            placeholder={`${placeholder} ${optional ? "(optional)" : ""}`}
+            placeholder={`${text(placeholder)} ${
+              optional ? `(${text("optional")})` : ""
+            }`}
             spellCheck={false}
             onChange={handleTextChange}
             onBlur={handleTextValidate}

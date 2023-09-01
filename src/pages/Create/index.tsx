@@ -2,11 +2,12 @@
 import { FC } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { features } from "../../constans/feature.const";
-import _ from "lodash";
 import "./Create.scss";
+import { useText } from "../../hooks";
 
 const Create: FC = () => {
   const { pathname } = useLocation();
+  const text = useText();
   return (
     <main id="create-page">
       <div className="features">
@@ -20,7 +21,7 @@ const Create: FC = () => {
               }`}
             >
               <span className="icon">{feature.icon}</span>
-              <span className="title">{_.upperFirst(feature.title)}</span>
+              <span className="title">{text(feature.title)}</span>
             </Link>
           );
         })}
