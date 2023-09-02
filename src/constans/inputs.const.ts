@@ -43,7 +43,7 @@ export const inputsProps: InputProps[] = [
       })
       .required()
       .messages({
-        isLink: "Incorrect link",
+        isLink: "Incorrect link. Example: https://qrquick.vercel.app/",
       }),
   },
   {

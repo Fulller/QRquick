@@ -67,18 +67,22 @@ const Input: FC<InputProps> = ({
   const handleTextChange = (event: ChangeEvent<HTMLInputElement>) => {
     const valueString: string = event.target.value.trim();
     setErrString(null);
-    setValue(valueString.trim());
+    setValue(valueString);
   };
   const handleTextValidate = () => {
     if (validation) {
-      const { error, value: valuex } = validation.validate(value);
+      const { error, value: valueValidate } = validation.validate(value);
       if (error) {
         const { message } = error;
         setErrString(_.replace(message, "value", _.upperFirst(name)));
-        setValue(null);
+        if (setFormValue) {
+          setFormValue({ name: name, payload: null });
+        }
       } else {
         setErrString(null);
-        setValue(valuex);
+        if (setFormValue) {
+          setFormValue({ name: name, payload: valueValidate });
+        }
       }
     }
   };
@@ -92,11 +96,11 @@ const Input: FC<InputProps> = ({
     setValue(value);
   };
   useEffect(() => {
+    if (type === "text") return;
     if (setFormValue) {
       setFormValue({ name: name, payload: value });
     }
-  }, [name, value, setFormValue, validation]);
-  console.log({ label });
+  }, [name, value, setFormValue, validation, type]);
   return (
     <div className="wrap-input-group">
       {type === "file" && (

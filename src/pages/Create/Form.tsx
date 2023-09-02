@@ -8,6 +8,7 @@ import { createQrcode } from "../../services/qrcode.service";
 import { useNavigate } from "react-router-dom";
 import loadingSVG from "../../images/loading/loading.svg";
 import { InputName } from "../../constans/inputs.const";
+import { useText } from "../../hooks";
 
 interface QRformProps {
   nameInputs: string[];
@@ -20,6 +21,7 @@ const reducer = (state: any, action: any) => {
   };
 };
 const QRform: FC<QRformProps> = ({ nameInputs = ["Name"], contentType }) => {
+  const text = useText();
   const navigate = useNavigate();
   const initialState = _.chain(nameInputs)
     .keyBy((item) => item)
@@ -94,7 +96,7 @@ const QRform: FC<QRformProps> = ({ nameInputs = ["Name"], contentType }) => {
         className={`button ${canSubmit ? "" : "disable"}`}
         onClick={handleSubmit}
       >
-        Customize & Download QR
+        {text("Customize & Download QR")}
         <img
           className={`loading-icon-btn ${!submiting ? "disable" : ""}`}
           src={loadingSVG}

@@ -36,7 +36,8 @@
         "Cancel": "Cancel",
         "Remove QR code?": "Remove QR code?",
         "Are you sure you want to remove this QR code?": "Are you sure you want to remove this QR code?",
-        "Language": "Language"
+        "Language": "Language",
+        "Customize & Download QR": "Customize & Download QR"
     },
     "vi": {
         "Create QR": "Tạo QR",
@@ -75,6 +76,7 @@
         "Cancel": "Hủy",
         "Remove QR code?": "Xóa bỏ mã QR này?",
         "Are you sure you want to remove this QR code?": "Bạn chắn chắn sẽ xóa bỏ mã QR này chứ?",
-        "Language": "Ngôn ngữ"
+        "Language": "Ngôn ngữ",
+        "Customize & Download QR": "Chỉnh sửa & tải xuống QR"
     }
 }
