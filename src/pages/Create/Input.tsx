@@ -85,6 +85,10 @@ const Input: FC<InputProps> = ({
           setFormValue({ name: name, payload: valueValidate });
         }
       }
+    } else {
+      if (setFormValue) {
+        setFormValue({ name: name, payload: value });
+      }
     }
   };
   function handleChangeFile(e: ChangeEvent<HTMLInputElement>) {

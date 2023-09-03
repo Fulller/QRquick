@@ -51,6 +51,7 @@ const QRform: FC<QRformProps> = ({ nameInputs = ["Name"], contentType }) => {
       if (!canSubmit) return;
       setCanSubmit(false);
       setSubmiting(true);
+      console.log(state);
       const { metadata: qrCode }: any = await createQrcode(
         standardForAPI(
           state,
