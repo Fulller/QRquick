@@ -6,4 +6,5 @@ export enum featureName {
   WIFI = "wifi",
   PHONE = "phone",
   TEXT = "text",
+  FILE = "file",
 }

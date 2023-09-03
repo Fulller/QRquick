@@ -29,7 +29,7 @@ const Input: FC<InputProps> = ({
   placeholder = "",
   name = "",
   optional = false,
-  fileType = fileTypeEnum.Image,
+  fileType = "*/*",
   setFormValue,
   label = "",
   validation,
@@ -41,9 +41,7 @@ const Input: FC<InputProps> = ({
   const [drapping, setDrapping] = useState<boolean>(false);
   const [errString, setErrString] = useState<string | null>(null);
   const { getRootProps } = useDropzone({
-    accept: {
-      [fileType]: [],
-    },
+    accept: fileType === "*/*" ? {} : { [fileType]: [] },
     multiple: true,
     maxSize: maxSize,
     onDragEnter(event) {
@@ -53,6 +51,9 @@ const Input: FC<InputProps> = ({
         if (typeAccept === "*" || typeAccept === typeDrap) {
           setDrapping(true);
         }
+      }
+      if (fileType === "*/*") {
+        setDrapping(true);
       }
     },
     onDragLeave() {
@@ -115,13 +116,13 @@ const Input: FC<InputProps> = ({
               type="file"
               onChange={handleChangeFile}
               hidden
-              accept={fileType}
+              {...(fileType === "*/*" ? {} : { accept: fileType })}
             />
           )}
           {!value ? (
             <p className="placeholder">
               <i className="fa-solid fa-upload fa-bounce upload-icon"></i>
-              {text(placeholder)}
+              {text(label)}
             </p>
           ) : (
             <div className="file">

@@ -14,6 +14,7 @@ export enum InputName {
   SECURITY_TYPE = "securityType",
   PHONE_NUMBER = "phoneNumber",
   TEXT_EDITOR = "textEditor",
+  FILE = "file",
 }
 export const inputsProps: InputProps[] = [
   {
@@ -48,24 +49,21 @@ export const inputsProps: InputProps[] = [
   },
   {
     name: InputName.IMAGE,
-    label: InputName.IMAGE,
-    placeholder: "Image placeholder",
+    label: "Image label",
     type: "file",
     fileType: fileType.Image,
     standardForAPI: "file",
   },
   {
     name: InputName.AUDIO,
-    label: InputName.AUDIO,
-    placeholder: "Audio placeholder",
+    label: "Audio label",
     type: "file",
     fileType: fileType.Audio,
     standardForAPI: "file",
   },
   {
     name: InputName.PDF,
-    label: InputName.PDF,
-    placeholder: "PDF placeholder",
+    label: "PDF label",
     type: "file",
     fileType: fileType.PDF,
     standardForAPI: "file",
@@ -129,5 +127,11 @@ export const inputsProps: InputProps[] = [
     type: "text-editor",
     defaultValue: "",
     standardForAPI: "data." + InputName.TEXT_EDITOR,
+  },
+  {
+    name: InputName.FILE,
+    label: "File label",
+    type: "file",
+    standardForAPI: "file",
   },
 ];
