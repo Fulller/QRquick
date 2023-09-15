@@ -1,0 +1,53 @@
+@import "../../../components/App/variables.scss";
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 24px;
+
+  .feature {
+    padding: 16px;
+    border-radius: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid var(--bg-o-l-1);
+
+    .title {
+      font-size: 16px;
+      color: var(--text-2);
+    }
+    .icon {
+      margin-right: 24px;
+      font-size: 30px;
+    }
+  }
+}
+@media (max-width: $medium) {
+  .features {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 610px) {
+  .features {
+    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 430px) {
+  .features {
+    gap: 8px;
+    .feature {
+      padding: 12px 8px;
+
+      .icon {
+        font-size: 20px;
+        margin-right: 12px;
+      }
+      .title {
+        font-size: 14px;
+      }
+    }
+  }
+}

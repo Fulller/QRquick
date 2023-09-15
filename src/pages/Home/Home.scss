@@ -1,36 +1,10 @@
-@import "../../components/App/variables.scss";
 #home-page {
   width: 100%;
-
-  .features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-
-    .feature {
-      display: flex;
-      align-items: center;
-      padding: 16px;
-      border-radius: 8px;
-
-      .title {
-        font-size: 24px;
-        color: var(--text-2);
-      }
-      .icon {
-        margin-right: 24px;
-        font-size: 40px;
-      }
-    }
-  }
-  @media (max-width: $medium) {
-    .features {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  @media (max-width: $small) {
-    .features {
-      grid-template-columns: 1fr;
-    }
+}
+#example {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  img {
+    width: 100%;
   }
 }
